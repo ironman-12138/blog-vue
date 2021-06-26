@@ -9,7 +9,7 @@
         <div class="header-action">
             <span><el-link href="/Blogs">主页</el-link></span>
             <el-divider direction="vertical"></el-divider>
-            <span><el-link href="/Blog/add" type="success">发表</el-link></span>
+            <span><el-link href="/Blog/add" style="color: rgb(0, 156, 0)">发表</el-link></span>
             <el-divider direction="vertical"></el-divider>
             <span v-if="hasLogin"><el-link @click="logout" type="danger">退出</el-link></span>
             <span v-else><el-link href="/Login" type="primary">登录</el-link></span>
@@ -61,5 +61,8 @@ export default {
     .header-action{
         margin-top: 10px;
         margin-bottom: 5px;
+    }
+    .add-class{
+        color: rgb(0, 156, 0);
     }
 </style>

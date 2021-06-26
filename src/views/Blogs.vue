@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="back">
         <Header></Header>
 
         <div class="block">
@@ -19,7 +19,11 @@
             <el-pagination
                 class="blog-page"
                 background
-                layout="prev, pager, next, jumper"
+                @size-change="handleSizeChange"
+                @current-change="handleCurrentChange"
+                :current-page="pageNum"
+                :page-size="pageSize"
+                layout="total, prev, pager, next, jumper"
                 :total= total>
             </el-pagination>
         </div>
@@ -49,11 +53,21 @@
                         "pageSize": pageSize
                     }
                 }).then(res => {
-                    //console.log(res.data.data.dataList);
+                    console.log(res.data.data);
                     _this.blogs = res.data.data.dataList;
                     _this.total = res.data.data.total;
                 })
-            }
+            },
+            // 改变页码
+            handleSizeChange(newSize) {
+                this.pageSize = newSize;
+                this.page(this.pageNum,this.pageSize);
+            },
+            // 点击分页
+            handleCurrentChange(current) {
+                this.pageNum = current;
+                this.page(this.pageNum,this.pageSize);
+            },
         },
         created(){
             this.page(1,5);
@@ -64,5 +78,13 @@
 <style>
     .blog-page{
         text-align: center;
+    }
+    .block{
+        height: 100%;
+        overflow: auto;
+    }
+    .back{
+        max-width: 960px;
+        margin: auto;
     }
 </style>

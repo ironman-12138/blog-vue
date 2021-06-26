@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="back">
         <Header></Header>
 
         <div class="blogDetail">
@@ -101,5 +101,9 @@
         width: 100%;
         min-height: 700px;
         padding: 20px 15px;
+    }
+    .back{
+        max-width: 960px;
+        margin: auto;
     }
 </style>

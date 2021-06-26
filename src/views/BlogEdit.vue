@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="back">
         <Header></Header>
 
         <div class="blogEdit-content">
@@ -11,7 +11,7 @@
                     <el-input type="textareea" v-model="ruleForm.description"></el-input>
                 </el-form-item>
                 <el-form-item label="内容" prop="content">
-                    <mavon-editor v-model="ruleForm.content"></mavon-editor>
+                    <mavon-editor :subfield="false" v-model="ruleForm.content"></mavon-editor>
                 </el-form-item>
 
                 <el-form-item>
@@ -61,13 +61,20 @@
                                 "Authorization": localStorage.getItem("token")
                             }
                         }).then(res => {
-                            console.log(res);
-                            this.$alert('提交成功', '提示', {
-                                confirmButtonText: '确定',
-                                callback: action => {
-                                    _this.$router.push("/Blogs");
-                                }
-                            });
+                            if(res.data.code == 200){
+                                _this.$message({
+                                    type: 'success',
+                                    message: '提交成功!'
+                                });
+                                _this.$router.push("/Blogs");
+                            }
+                            // console.log(res);
+                            // this.$alert('提交成功', '提示', {
+                            //     confirmButtonText: '确定',
+                            //     callback: action => {
+                            //         _this.$router.push("/Blogs");
+                            //     }
+                            // });
                         })
                     } else {
                         console.log('error submit!!');
@@ -102,5 +109,9 @@
 <style>
     .blogEdit-content{
         text-align: center;
+    }
+    .back{
+        max-width: 960px;
+        margin: auto;
     }
 </style>
