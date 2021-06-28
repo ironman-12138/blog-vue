@@ -3,6 +3,14 @@
         <Header></Header>
 
         <div class="block">
+            <div style="margin:0 auto;width:40%;">
+                <el-input
+                    placeholder="请输入标题搜索"
+                    prefix-icon="el-icon-search"
+                    @input="inputChange()"
+                    v-model="input2">
+                </el-input>
+            </div>
             <el-timeline>
                 <el-timeline-item :timestamp="blog.created" placement="top" v-for="(blog,i) in blogs" :key="i">
                     <el-card>
@@ -41,17 +49,19 @@
                 blogs: {},
                 pageNum: 1,
                 pageSize: 5,
-                total: 0
+                total: 0,
+                input2: ''
             };
         },
         methods: {
             page(pageNum, pageSize){
                 const _this = this;
-                _this.$axios.get("/blog/list",{
-                    params: {
+                _this.$axios.post("/blog/list",{
+                    // data: {
                         "pageNum": pageNum,
-                        "pageSize": pageSize
-                    }
+                        "pageSize": pageSize,
+                        "title": _this.input2
+                    // }
                 }).then(res => {
                     console.log(res.data.data);
                     _this.blogs = res.data.data.dataList;
@@ -68,6 +78,9 @@
                 this.pageNum = current;
                 this.page(this.pageNum,this.pageSize);
             },
+            inputChange() {
+                this.page(this.pageNum,this.pageSize);
+            }
         },
         created(){
             this.page(1,5);
