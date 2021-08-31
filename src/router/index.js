@@ -4,6 +4,7 @@ import Login from '@/views/Login'
 import Blogs from '@/views/Blogs'
 import BlogDetail from '@/views/BlogDetail'
 import BlogEdit from '@/views/BlogEdit'
+import Message from '@/views/Message'
 
 Vue.use(Router)
 
@@ -39,6 +40,14 @@ export default new Router({
       path: '/Blog/add',
       name: 'BlogAdd',
       component: BlogEdit,
+      meta: {
+        requireAuth: true
+      }
+    },
+    {
+      path: '/Blog/message',
+      name: 'Message',
+      component: Message,
       meta: {
         requireAuth: true
       }

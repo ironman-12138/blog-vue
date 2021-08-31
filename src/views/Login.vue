@@ -11,18 +11,23 @@
                     添加status-icon属性可显示状态图标
                     ref为表单被引用时的名称
                  -->
-                <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-                    <el-form-item label="用户名" prop="username">
-                        <el-input v-model="ruleForm.username"></el-input>
-                    </el-form-item>
-                    <el-form-item label="密码" prop="password">
-                        <el-input type="password" v-model="ruleForm.password"></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
-                        <el-button @click="resetForm('ruleForm')">重置</el-button>
-                    </el-form-item>
-                </el-form>
+                 <div style="margin-top:5%;">
+                    <el-card class="box-card">
+                        <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+                            <el-form-item label="用户名" prop="username">
+                                <el-input v-model="ruleForm.username"></el-input>
+                            </el-form-item>
+                            <el-form-item label="密码" prop="password">
+                                <el-input type="password" v-model="ruleForm.password"></el-input>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" @click="submitForm('ruleForm')">登录</el-button>
+                                <el-button @click="resetForm('ruleForm')">重置</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </el-card>
+                 </div>
+
             </el-main>
         </el-container>
     </div>
@@ -130,5 +135,11 @@ export default {
     .demo-ruleForm{
         max-width: 500px;
         margin: auto;
+    }
+
+    .box-card {
+        width: 30%;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.5);
     }
 </style>

@@ -40,7 +40,7 @@
                 rules: {
                     title: [
                         { required: true, message: '请输入标题', trigger: 'blur' },
-                        { min: 3, max: 15, message: '长度在 3 到 15 个字符', trigger: 'blur' }
+                        { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' }
                     ],
                     description: [
                         { required: true, message: '请输入摘要', trigger: 'blur' },

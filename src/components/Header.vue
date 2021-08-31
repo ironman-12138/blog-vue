@@ -1,18 +1,20 @@
 <template>
-    <div class="blog-header">
-        <h3>欢迎来到XCoder的博客</h3>
-        <div>
-            <el-avatar :size="50" :src="user.avatar"></el-avatar>
-            <div>{{user.username}}</div>
-        </div>
+    <div>
+        <div class="blog-header">
+            <h3>欢迎来到XCoder的博客</h3>
+            <div>
+                <el-avatar :size="60" :src="user.avatar"></el-avatar>
+                <div>{{user.username}}</div>
+            </div>
 
-        <div class="header-action">
-            <span><el-link href="/Blogs">主页</el-link></span>
-            <el-divider direction="vertical"></el-divider>
-            <span><el-link href="/Blog/add" style="color: rgb(0, 156, 0)">发表</el-link></span>
-            <el-divider direction="vertical"></el-divider>
-            <span v-if="hasLogin"><el-link @click="logout" type="danger">退出</el-link></span>
-            <span v-else><el-link href="/Login" type="primary">登录</el-link></span>
+            <div class="header-action">
+                <span><el-link href="/Blogs">主页</el-link></span>
+                <el-divider direction="vertical"></el-divider>
+                <span><el-link href="/Blog/add" style="color: rgb(0, 156, 0)">发表</el-link></span>
+                <el-divider direction="vertical"></el-divider>
+                <span v-if="hasLogin"><el-link @click="logout" type="danger">退出</el-link></span>
+                <span v-else><el-link href="/Login" type="primary">登录</el-link></span>
+            </div>
         </div>
     </div>
 </template>
@@ -43,7 +45,7 @@ export default {
         }
     },
     created() {
-        if (this.$store.state.userInfo.username) {
+        if (this.$store.state.userInfo) {
             this.user.username = this.$store.state.userInfo.username;
             this.user.avatar = this.$store.state.userInfo.avatar;
             this.hasLogin = true;
